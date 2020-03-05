@@ -1,0 +1,26 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.graphTitle {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #3B3B4D;
+    padding-left: 10%;
+    margin-bottom: 5%;
+}
+
+.graphContainer {
+    height: calc(100vh - 50px);
+    overflow: scroll;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+}
+.graphBox {
+    /* border: solid */
+}

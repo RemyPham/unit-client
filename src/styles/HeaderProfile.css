@@ -1,0 +1,18 @@
+.headerProfile {
+    display: flex;
+    height: 10%;
+    border-bottom: solid 0.5px rgb(108, 122, 137, 0.5);
+    align-items: center;
+}
+.headerProfile>:first-child {
+    padding-left: 5%;
+}
+.headerProfile>:nth-child(2) {
+    color: #3B3B4D;
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0 auto;
+}
+

@@ -1,0 +1,28 @@
+.userProfilePage {
+    height: calc(100vh - 50px);
+}
+.userOption {
+    height: calc(90vh - 50px);
+    overflow: scroll;
+}
+.userOption p {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    font-family: 'Muli';
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: -0.3px;
+    color: #3B3B4D;
+    border-bottom: solid 0.5px rgb(108, 122, 137, 0.5);
+}
+
+.userInfos, .aboutUs {
+    margin-bottom: 15%;
+}
+
+.userOption>div :first-child {
+    border-top: solid 0.5px rgb(108, 122, 137, 0.5);
+}
+
