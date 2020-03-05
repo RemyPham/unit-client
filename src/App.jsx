@@ -6,7 +6,7 @@ import Home from "./views/Home"
 import Dashboard from "./views/Dashboard";
 
 // styles
-// import "./assets/fonts/fonts.css"
+import "./assets/fonts/fonts.css"
 import "./app.css"
 
 import { useAuth } from "./auth/useAuth";
