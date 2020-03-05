@@ -2,27 +2,32 @@ import '../styles/Graph.css'
 
 import React, { Component } from 'react'
 import Chart from "chart.js";
+import apiHandler  from '../api/apiHandler'
 
+const api = new apiHandler();
 
 
 export default class Graph extends Component {
-    exInfos = this.props.exercisesInfos
-    // state = {
-    //     title: exInfos.title
-    //     unit1: (exInfos.data.filter(d => {
-    //         return d.unit1Data
-    // })),
-    //     unit2: (exInfos.data.filter(d => {
-    //         return d.unit2Data
-    // })),
-    //     dates: (exInfos.data.filter(d => {
-    //         return d.date
-    // })),
-    // }
+    state = {
+        title: this.props.exercisesInfos.title,
+        unit1: (this.props.exercisesInfos.data.map(d => {
+            return d.unit1Data
+    })),
+        unit2: (this.props.exercisesInfos.data.map(d => {
+            return d.unit2Data
+    })),
+        dates: (this.props.exercisesInfos.data.map(d => {
+            return d.date.slice(0, 10).split("-").join("/")
+            
+    })),
+    }
 
     chartRef = React.createRef();
 
     componentDidMount() {
+
+
+
         const myChartRef = this.chartRef.current.getContext("2d");
 
         const {height: graphHeight} = myChartRef.canvas;
@@ -72,13 +77,16 @@ export default class Graph extends Component {
     }
 
     render() {
-        console.log(this.exInfos)
+        console.log(this.props.exercisesInfos)
+        console.log(this.state)
         return (
-            <div>
-                <canvas
-                id="myChart"
-                ref={this.chartRef}
-                />
+            <div className="chartWrapper">
+                <div className="chartAreaWrapper">
+                    <canvas
+                    id="myChart"
+                    ref={this.chartRef}
+                    /> 
+                </div>
             </div>
         )
     }
