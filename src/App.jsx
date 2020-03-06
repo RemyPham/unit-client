@@ -12,7 +12,7 @@ import "./app.css"
 
 import { useAuth } from "./auth/useAuth";
 import UserContext from "./auth/UserContext";
-
+import {ProtectedRoute} from "./auth/ProtectedRoute"
 
 function App() {
 
@@ -27,13 +27,13 @@ function App() {
     
       <UserContext.Provider value={UserContextValue}>
       {isLoading ? (
-        null
+        <p>...loading</p>
       ) : (
         <React.Fragment>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route path="/dashboard/:id" component={GraphDetail}/>
+            <ProtectedRoute exact path="/dashboard/:id" component={GraphDetail}/>
           </Switch>
       </React.Fragment>
   )}

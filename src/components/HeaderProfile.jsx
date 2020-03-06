@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons'
 
 export default function HeaderProfile(props) {
-    console.log(props)
+    console.log("ici", props)
     return (
         <div className="headerProfile">
             <div>

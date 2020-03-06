@@ -2,14 +2,14 @@ import React, {useContext} from 'react'
 import '../styles/UserProfile.css'
 import HeaderProfile from "../components/HeaderProfile"
 import {useAuth} from "../auth/useAuth";
-import UserContext from "./../auth/UserContext";
 
 export default function UserProfile() {
 
-    // const {currentUser} = useAuth();
-    const userContext = useContext(UserContext);
-    const { currentUser } = userContext;
- 
+    const {currentUser} = useAuth();
+
+    console.log("currentUser");
+    console.log(currentUser);
+    
 
     return (
         <div className="userProfilePage">

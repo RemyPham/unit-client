@@ -13,6 +13,8 @@ export const useAuth = () => {
   useEffect(() => {
     api.get("/is-loggedin")
       .then(res => {
+        console.log(res);
+        
         setIsLoggedIn(true);
         setIsLoading(false);
         setCurrentUser(res.data.currentUser);

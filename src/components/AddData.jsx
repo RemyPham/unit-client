@@ -11,9 +11,9 @@ import DataValue from './Data/DataValue'
 import DataMood from './Data/DataMood'
 
 export default function AddData(props) {
-    const {currentUser} = useAuth();
-    // const userContext = useContext(UserContext);
-    // const { currentUser } = userContext;
+    // const {currentUser} = useAuth();
+    const userContext = useContext(UserContext);
+    const { currentUser } = userContext;
     console.log(currentUser)
     //STATE FOR EXERCISE
     const [justAState, setJustAState] = useState(true)

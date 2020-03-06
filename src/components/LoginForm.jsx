@@ -2,26 +2,21 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, withRouter } from "react-router-dom";
 
-import UserContext from "../auth/UserContext"
 import apiHandler  from '../api/apiHandler'
 
 const api = new apiHandler();
 
 export default withRouter(function LoginForm(props) {
 
-    // const [redirection, setRedirection] = useState(false)
-    // const [loginUserInfo, setLoginUserInfo] = useState({})
-    const userContext = useContext(UserContext);
-    const { setCurrentUser } = userContext;
-
     const {register, handleSubmit} = useForm();
     const onSubmit = async data => {
         try {
             const apiRes = await api.post("/signin", data);
-            setCurrentUser(apiRes.data.currentUser);
             props.history.push("/dashboard")
         } catch (err) {
-            setCurrentUser(null)
+            console.error(err);
+            
+            // setCurrentUser(null)
         }
     }
 
