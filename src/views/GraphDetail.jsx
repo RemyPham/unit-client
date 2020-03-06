@@ -1,34 +1,46 @@
 import '../styles/Graph.css'
 
-import React, { Component } from 'react'
+import React, {setState, Component } from 'react'
 import Chart from "chart.js";
+import apiHandler  from '../api/apiHandler'
+import FooterUser from '../components/FooterUser'
+
+const api = new apiHandler();
 
 
 export default class Graph extends Component {
     state = {
-        title: this.props.exercisesInfos.title,
-        unit1: (this.props.exercisesInfos.data.map(d => {
-            return d.unit1Data
-    })),
-        unit2: (this.props.exercisesInfos.data.map(d => {
-            return d.unit2Data
-    })),
-        dates: (this.props.exercisesInfos.data.map(d => {
-            return d.date.slice(0, 10).split("-").join("/")
-    })),
+        unit1: [],
+        unit2: [],
+        dates: [],
+        moods: []
     }
-
-    
 
     chartRef = React.createRef();
 
     componentDidMount() {
-        const average = [];
-        for (let i=0; i<this.state.unit1.length; i++) {
-            let sum = this.state.unit1[i] + this.state.unit2[i];
-            average.push(sum/2)
-        };
+        api
+        .get(this.props.match.url)
+        .then(details => {
+            console.log(details.data.data);
+            details.data.data.map(detail => {
+                this.state.unit1.push(detail.unit1Data);
+                this.state.unit2.push(detail.unit2Data);
+                this.state.dates.push(detail.date.slice(0, 10).split("-").join("/"));
+                this.state.moods.push(detail.mood)
+            })
+        })
+        .catch(err => console.log(err))
 
+        const average = [];
+        if (this.state.moods.length > 0) {
+            for (let i=0; i<this.state.unit1.length; i++) {
+                let sum = this.state.unit1[i] + this.state.unit2[i];
+                average.push(sum/2)
+            };
+            return average
+        }
+        
 
         const myChartRef = this.chartRef.current.getContext("2d");
 
@@ -80,8 +92,9 @@ export default class Graph extends Component {
         })
     }
 
+
     render() {
-        console.log(this.props.exercisesInfos)
+        console.log(this.props)
         console.log(this.state)
         return (
             <div className="chartWrapper">
@@ -95,3 +108,5 @@ export default class Graph extends Component {
         )
     }
 }
+
+

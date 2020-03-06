@@ -1,10 +1,11 @@
-import React from 'react'
-import {useAuth} from "../auth/useAuth";
+import React, {useContext} from 'react'
+import UserContext from "./../auth/UserContext";
 
 import '../styles/Empty.css'
 
 export default function Empty(props) {
-    const {currentUser} = useAuth();
+    const userContext = useContext(UserContext);
+    const { currentUser } = userContext;
     
     return (
         <div className="emptyPage">

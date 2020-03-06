@@ -19,19 +19,18 @@ export default class ExoUnitType extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("front")
 
         api
         .post("/exercise", {...this.state})
-        .then(res => console.log(res))
+        .then(res => this.props.final())
         .catch(err => console.log(err))
 
     }
     handleUnit1 = (e) => {
-        this.setState({exerciseType1: e.target.value})
+        this.setState({unit1Type: e.target.value})
     }
     handleUnit2 = (e) => {
-        this.setState({exerciseType2: e.target.value})
+        this.setState({unit2Type: e.target.value})
     }
 
 

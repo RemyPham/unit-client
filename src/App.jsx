@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 // pages components
 import Home from "./views/Home"
 import Dashboard from "./views/Dashboard";
+import GraphDetail from "./views/GraphDetail"
 
 // styles
 import "./assets/fonts/fonts.css"
@@ -31,7 +32,8 @@ function App() {
         <React.Fragment>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route path="/dashboard/:id" component={GraphDetail}/>
           </Switch>
       </React.Fragment>
   )}

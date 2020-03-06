@@ -27,18 +27,18 @@ export default withRouter(function LoginForm(props) {
 
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
-                <div className="container">
-                    <label htmlFor="email">Email</label>
-                    <input ref={register({required: true})} name="email" id="email" type="email"/>
-                </div>
+            <div className="container">
+                <label htmlFor="email">Email</label>
+                <input ref={register({required: true})} name="email" id="email" type="email"/>
+            </div>
                     
-                <div className="container">
-                    <label htmlFor="password">Password</label>
-                    <input ref={register({required: true, min: 6})} name="password" id="password" type="password"/>
+            <div className="container">
+                <label htmlFor="password">Password</label>
+                <input ref={register({required: true, min: 6})} name="password" id="password" type="password"/>
                     <Link to={"#"} className="forgot">forgot your password ?</Link>
-                </div>
+            </div>
 
-                <button className="btn">Login</button>
-            </form>
+            <button className="btn">Login</button>
+        </form>
     )
 })

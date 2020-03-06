@@ -24,7 +24,7 @@ export default function DataValue(props) {
             setConcernedExo(exo.data);
         })
         .catch(err => console.error(err))
-    }, [])
+    }, [props.exoID])
 
     const handleSubmit = (e) => {
         e.preventDefault()

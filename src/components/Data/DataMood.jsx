@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Redirect} from 'react-router-dom'
 
 import apiHandler  from '../../api/apiHandler'
 
@@ -10,7 +9,6 @@ export default class DataMood extends Component {
     state = {
         unit1Data: this.props.unitValue1,
         unit2Data: this.props.unitValue2,
-        // redirection: false
     }
 
     handleChange = (e) => {
@@ -26,16 +24,13 @@ export default class DataMood extends Component {
             unit2Data: this.state.unit2Data,
             mood: this.state.mood
         })
-        .then(res => console.log(res))
+        .then(res => this.props.final())
         .catch(err => console.log(err))
     }
 
     render() {
         console.log(this.props.exoID)
         console.log(this.state)
-        // if (this.state.redirection) {
-        //     return <Redirect to='/dashboard' />
-        // }
         return (
             <form className="exoTypeForm" onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <p className="moodTitle">How are you feeling today ?</p>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../auth/UserContext"
 import apiHandler  from '../api/apiHandler'
 import {useAuth} from "../auth/useAuth";
+import { Link } from "react-router-dom";
 
 import "../styles/Dashboard.css"
 
@@ -14,7 +15,10 @@ import UserProfile from '../components/UserProfile'
 const api = new apiHandler();
 
 export default function Dashboard(props) {
-    const {currentUser} = useAuth();
+    const userContext = useContext(UserContext);
+    const { currentUser } = userContext;
+    // const {currentUser} = useAuth();
+    console.log(currentUser)
 
     
     const [iconSelect, setIconSelect] = useState("chart")
@@ -38,20 +42,26 @@ export default function Dashboard(props) {
         setIconSelect("add")
     }
 
+    const triggerChart = () => {
+        setIconSelect("chart");
+        window.location.reload(false)
+    }
+
 
     return iconSelect === "chart" ? (
         exercises ? (
             <div className="page">
                 <div className="graphContainer">
                     {exercises.map((exercise,i) => (
-                        
-                        <div className="graphBox" key={i}>
-                            <div>
-                               <p className="graphTitle">{exercise.title}</p>
-                                <p>{exercise.data.date}</p>
+                        <Link className="link" to={"/dashboard/"+ exercise._id} key={i}>
+                            <div className="graphBox" >
+                                <div>
+                                <p className="graphTitle">{exercise.title}</p>
+                                    <p>{exercise.data.date}</p>
+                                </div>
+                                <Graph exercisesInfos={exercise} />
                             </div>
-                            <Graph exercisesInfos={exercise} />
-                        </div>
+                        </Link>
                     ))}
                 </div>
                 
@@ -68,7 +78,7 @@ export default function Dashboard(props) {
 
     ) : iconSelect === "add" ? (
         <div className="page">
-            <AddData />
+            <AddData goToChart={triggerChart} />
             <FooterUser selection={iconSelect} handleIconState={e => setIconSelect(e)} />
         </div>
 

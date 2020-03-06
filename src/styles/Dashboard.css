@@ -11,7 +11,6 @@
     line-height: 25px;
     color: #3B3B4D;
     padding-left: 10%;
-    margin-bottom: 5%;
 }
 
 .graphContainer {
@@ -23,4 +22,13 @@
 }
 .graphBox {
     /* border: solid */
+    margin: 5% 2%;
+}
+.graphBox:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: grey 5px 5px 10px;
+}
+
+.link {
+    text-decoration: none;
 }

@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import '../styles/AddData.css'
 import {useAuth} from "../auth/useAuth";
+import UserContext from "./../auth/UserContext";
 
 import ExoName from './Exo/ExoName'
 // import ExoTags from './Exo/ExoTags'
@@ -9,8 +10,10 @@ import ExoSelection from './Data/ExoSelection'
 import DataValue from './Data/DataValue'
 import DataMood from './Data/DataMood'
 
-export default function AddData() {
+export default function AddData(props) {
     const {currentUser} = useAuth();
+    // const userContext = useContext(UserContext);
+    // const { currentUser } = userContext;
     console.log(currentUser)
     //STATE FOR EXERCISE
     const [justAState, setJustAState] = useState(true)
@@ -50,6 +53,14 @@ export default function AddData() {
         // setAddTagState(false);
         setAddTypeState(true);
     }
+        //GO TO ADD DATA AFTER CREATING EXERCISE
+    const goToData = () => {
+        setUserDataChoice("data")
+
+        setJustAState(true);
+        // setAddTagState(false);
+        setAddTypeState(false);
+    }
 
 
 
@@ -69,6 +80,15 @@ export default function AddData() {
         setAddExoValueState(false);
         setAddMoodState(true);
     }
+        //GO TO CHART AND REFRESH
+    const finalAdd = () => {
+        setDataState(true);
+        setAddExoValueState(false);
+        setAddMoodState(false);
+
+        props.goToChart()
+    }
+
 
 
     return (
@@ -94,7 +114,7 @@ export default function AddData() {
             
                     {/* {(userDataChoice === "exercice" && addTagState) && <ExoTags addType={triggerAddType}/>} */}
 
-                    {(userDataChoice === "exercise" && addTypeState && exerciseTitle) && <ExoUnitType userInfo={currentUser} siblingInfo={exerciseTitle} />}
+                    {(userDataChoice === "exercise" && addTypeState && exerciseTitle) && <ExoUnitType userInfo={currentUser} siblingInfo={exerciseTitle} final={goToData} />}
 
 
 
@@ -109,6 +129,7 @@ export default function AddData() {
                     exoID={exoSelectedID}
                     unitValue1={exoValue1}
                     unitValue2={exoValue2}
+                    final={finalAdd}
                     />}
                 </div>
                 

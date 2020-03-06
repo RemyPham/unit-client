@@ -7,7 +7,7 @@ import apiHandler  from '../api/apiHandler'
 
 const api = new apiHandler();
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
     const [eye, setEye] = useState(false)
 
     const {register, handleSubmit} = useForm();
@@ -15,7 +15,7 @@ export default function RegisterForm() {
         console.log(data)
         api
         .post("/signup", data)
-        .then(response => console.log(response))
+        .then(response => props.registerDone())
         .catch(err => console.log(err))
     }
 

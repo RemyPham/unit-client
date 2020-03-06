@@ -12,6 +12,10 @@ import "../styles/Home.css";
 export default function Home() {
     const [isSelected, setIsSelected] = useState("login")
 
+    const toLogin = () => {
+        setIsSelected("login");
+    }
+
 
     return (
         <div className="form-page">
@@ -34,7 +38,7 @@ export default function Home() {
             </div>
 
             <div className="home-content">
-                {(isSelected === "login" ? <LoginForm /> : <RegisterForm />)}
+                {(isSelected === "login" ? <LoginForm /> : <RegisterForm registerDone={toLogin} />)}
 
             </div>
         </div>
