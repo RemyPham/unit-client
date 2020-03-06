@@ -123,7 +123,7 @@ font-family: 'Muli';
 }
 
 .icon {
-    color: #FB3353;
+    color: rgb(251, 51, 83);
 }
 .icon:hover {
     cursor: pointer;
