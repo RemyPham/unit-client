@@ -15,6 +15,7 @@ export default class ExoUnitType extends Component {
         title: this.props.siblingInfo.exerciseName,
         user: this.props.userInfo._id
     }
+    
 
     
     handleSubmit = (e) => {

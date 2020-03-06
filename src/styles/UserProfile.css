@@ -17,6 +17,9 @@
     color: #3B3B4D;
     border-bottom: solid 0.5px rgb(108, 122, 137, 0.5);
 }
+.userOption p:hover {
+    background-color: rgb(251, 51, 83, 0.5);
+}
 
 .userInfos, .aboutUs {
     margin-bottom: 15%;

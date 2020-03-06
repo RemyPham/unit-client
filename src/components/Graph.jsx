@@ -84,6 +84,7 @@ export default class Graph extends Component {
         console.log(this.props.exercisesInfos)
         console.log(this.state)
         return (
+            
             <div className="chartWrapper">
                 <div className="chartAreaWrapper">
                     <canvas

@@ -1,9 +1,9 @@
 import '../styles/Graph.css'
 
-import React, {setState, Component } from 'react'
+import React, { Component } from 'react'
 import Chart from "chart.js";
 import apiHandler  from '../api/apiHandler'
-import FooterUser from '../components/FooterUser'
+// import FooterUser from '../components/FooterUser'
 
 const api = new apiHandler();
 

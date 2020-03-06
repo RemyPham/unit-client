@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../auth/UserContext"
 import apiHandler  from '../api/apiHandler'
-import {useAuth} from "../auth/useAuth";
+// import {useAuth} from "../auth/useAuth";
 import { Link } from "react-router-dom";
 
 import "../styles/Dashboard.css"
+import redLogo from "../assets/img/unit-color.svg";
 
 import FooterUser from '../components/FooterUser'
 import Empty from '../components/Empty'
@@ -51,6 +52,7 @@ export default function Dashboard(props) {
     return iconSelect === "chart" ? (
         exercises ? (
             <div className="page">
+                <img className="redLogo" src={redLogo} alt="red logo" />
                 <div className="graphContainer">
                     {exercises.map((exercise,i) => (
                         <Link className="link" to={"/dashboard/"+ exercise._id} key={i}>

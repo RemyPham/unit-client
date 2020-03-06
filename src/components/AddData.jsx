@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import '../styles/AddData.css'
-import {useAuth} from "../auth/useAuth";
+// import {useAuth} from "../auth/useAuth";
 import UserContext from "./../auth/UserContext";
 
 import ExoName from './Exo/ExoName'

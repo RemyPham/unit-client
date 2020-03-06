@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import '../styles/UserProfile.css'
 import HeaderProfile from "../components/HeaderProfile"
 import {useAuth} from "../auth/useAuth";
